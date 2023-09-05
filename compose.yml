@@ -2,16 +2,18 @@ services:
   db:
     build: db
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=1
-      - MYSQL_USER=myuser
-      - MYSQL_PASSWORD=mypass
-      - MYSQL_DATABASE=mydb
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=mini
+      - MYSQL_PASSWORD=shop
+      - MYSQL_DATABASE=minishop
     volumes:
       - ./db/src:/work
 
   web:
     build: web
     ports:
-      - 9980:80
+      - 8080:80
     volumes:
       - ./web/src:/var/www/html
+    depends_on:
+      - db
