@@ -3,7 +3,7 @@ require_once __DIR__ . '/dbdata.php';
 
 class Cart extends DbData
 {
-    public function addItems($ident, $quantity)
+    public function addItem($ident, $quantity)
     {
         $sql = "select * from cart where ident = ?";
         $stmt = $this->query($sql, [$ident]);
