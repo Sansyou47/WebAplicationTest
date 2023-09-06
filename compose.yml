@@ -1,6 +1,8 @@
 services:
   db:
+    container_name: mysql-db
     build: db
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=mini
@@ -8,8 +10,11 @@ services:
       - MYSQL_DATABASE=minishop
     volumes:
       - ./db/src:/work
+    networks:
+      - hoge0
 
   web:
+    container_name: webserver
     build: web
     ports:
       - 8080:80
@@ -17,3 +22,9 @@ services:
       - ./web/src:/var/www/html
     depends_on:
       - db
+    networks:
+      - hoge0
+
+networks:
+  hoge0:
+    driver: bridge
