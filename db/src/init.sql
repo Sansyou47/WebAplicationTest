@@ -1,4 +1,4 @@
-
+use minishop;
 
 # テーブル items の作成
 drop table if exists items; 
@@ -9,7 +9,7 @@ create table items(
 	maker	varchar(50) not null,
 	price	int,
 	image	varchar(20),
-	genre varchar(10)
+	genre	varchar(10)
 );
 
 # テーブルitemsへデータを入力
