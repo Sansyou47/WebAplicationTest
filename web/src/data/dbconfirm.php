@@ -10,7 +10,7 @@
   <h4>ショッピングサイトデータ確認：0J04038 嫁阪雄大</h4>
   <hr>
   <?php
-  $dsn = 'mysql:host=localhost;dbname=shop;charset=utf8';
+  $dsn = 'mysql:host=db;dbname=shop;charset=utf8';
   $user = 'shopping';
   $password = 'site';
 

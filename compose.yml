@@ -8,9 +8,11 @@ services:
       - MYSQL_USER=shopping
       - MYSQL_PASSWORD=site
       - MYSQL_DATABASE=shop
+    ports:
+      - 3306:3306
     volumes:
       - ./db/src:/work
-      - ./db/src/:/docker-entrypoint-initdb.d/
+      - ./db/src:/docker-entrypoint-initdb.d/
 
   web:
     container_name: webserver
