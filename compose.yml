@@ -5,11 +5,12 @@ services:
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_USER=mini
-      - MYSQL_PASSWORD=shop
-      - MYSQL_DATABASE=minishop
+      - MYSQL_USER=shopping
+      - MYSQL_PASSWORD=site
+      - MYSQL_DATABASE=shop
     volumes:
       - ./db/src:/work
+      - ./db/src/:/docker-entrypoint-initdb.d/
 
   web:
     container_name: webserver
