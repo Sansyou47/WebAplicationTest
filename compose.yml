@@ -10,8 +10,6 @@ services:
       - MYSQL_DATABASE=minishop
     volumes:
       - ./db/src:/work
-    networks:
-      - hoge0
 
   web:
     container_name: webserver
@@ -22,9 +20,3 @@ services:
       - ./web/src:/var/www/html
     depends_on:
       - db
-    networks:
-      - hoge0
-
-networks:
-  hoge0:
-    driver: bridge

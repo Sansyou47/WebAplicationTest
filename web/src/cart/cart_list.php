@@ -25,8 +25,17 @@ if (empty($cartItems)) {
         //$cartItems = $cart->getItems();
         $total = 0;
         foreach ($cartItems as $item) {
-            echo '<td class="td_right">&yen;' . number_format($item['price']) . '</td>';
+            #echo '<td class="td_right">&yen;' . number_format($item['price']) . '</td>';
             echo '<form method="POST" action="cart_change.php">';
+
+            #echo '<td class="td_right">&yen;' . number_format($item['price'] * $item['quantity']) . '</td>';
+
+            echo '<tr><td class="td_mini_img"><img class="mini_img"
+            src="../images/' . $item['image'] . '"></td>';
+            echo '<td class="td_item_name">' . $item['name'] . '</td>';
+            echo '<td class="td_item_maker">' . $item['maker'] . '</td>';
+            echo '<td class="td_right">&yen; ' . number_format($item['price']) . '</td>';
+            # echo '<td class="td_right">' . $item['quantity'] . '</td>';
             echo '<td><select name="quantity">';
             for ($i = 1; $i <= 10; $i++) {
                 echo '<option value="' . $i . '"';
@@ -38,20 +47,12 @@ if (empty($cartItems)) {
                 echo $i . '</option>';
             }
             echo '</select>';
-            echo '<input type="hidden" name="ident" value="' . $item['ident'] . '">';
+            # echo '<input type="hidden" name="ident" value="' . $item['ident'] . '">';
             echo '&nbsp;<input type="submit" value="変更"></td>';
             echo '</form>';
             echo '<td class="td_right">&yen;' . number_format($item['price'] * $item['quantity']) . '</td>';
-
-            echo '<tr><td class="td_mini_img"><img class="mini_img"
-            src="../images/' . $item['image'] . '"></td>';
-            echo '<td class="td_item_name">' . $item['name'] . '</td>';
-            echo '<td class="td_item_maker">' . $item['maker'] . '</td>';
-            echo '<td class="td_right">&yen; ' . number_format($item['price']) . '</td>';
-            echo '<td class="td_right">' . $item['quantity'] . '</td>';
-            echo '<td class="td_right">&yen;' . number_format($item['price'] * $item['quantity']) . '</td>';
             echo '<form method="POST" action="cart_delete.php">';
-            echo '<td><input type="hidden" name"ident" value="' . $item['ident'] . '">';
+            echo '<td><input type="hidden" name="ident" value="' . $item['ident'] . '">';
             echo '<input type="submit" value="削除"></td>';
             echo '</form>';
             echo '</tr>';
