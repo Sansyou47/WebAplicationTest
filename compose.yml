@@ -12,7 +12,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./db/src:/work
-      - ./db/src/:/docker-entrypointinitdb.d/
+      - ./db/src:/docker-entrypoint-initdb.d/
     ports:
       - 3306:3306
     restart: on-failure
