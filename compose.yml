@@ -1,0 +1,25 @@
+services:
+  db:
+    container_name: mysql-db
+    build: db
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=shopping
+      - MYSQL_PASSWORD=site
+      - MYSQL_DATABASE=shop
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/src:/work
+      - ./db/src:/docker-entrypoint-initdb.d/
+
+  web:
+    container_name: webserver
+    build: web
+    ports:
+      - 80:80
+    volumes:
+      - ./web:/var/www/html
+    depends_on:
+      - db
