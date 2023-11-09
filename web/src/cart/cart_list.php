@@ -1,10 +1,13 @@
 <?php
-require_once  __DIR__  .  '/../header.php';	// header.phpを読み込む
+require_once __DIR__ . '/../header.php';
+if (!isset($cart)) {
+	require_once __DIR__ . "/../classes/cart.php";
+	$cart = new Cart;
+}
 
-// カート内のすべてのデータを取り出す		
-$cartItems = $cart->getItems();
+$cartItems = $cart->getItems($_SESSION['$Id']);
 if (empty($cartItems)) {
-	echo '<h4>お客様のショッピングカートに商品はありません。</h4>';
+	echo '<h4>お客様のショッピングカートに商品はございません。</h4>';
 } else {
 ?>
 
@@ -65,7 +68,7 @@ if (empty($cartItems)) {
 		</tr>
 	</table>
 	<br>
-	<a href="../order/order_now.php">注文する</a>
+	<a href="../order/order_confirm.php"><span class="button_image2">注文する</span></a>
 
 <?php
 }

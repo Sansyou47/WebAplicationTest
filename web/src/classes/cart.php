@@ -25,10 +25,10 @@ class Cart extends DbData
   }
 
   // カート内のすべてのデータを取り出す
-  public function getItems()
+  public function getItems($item)
   {
-    $sql = "select items.ident, items.name, items.maker, items.price, cart.quantity, items.image, items.genre from cart join items on cart.ident = items.ident";
-    $stmt = $this->query($sql, []);
+    $sql = "select items.ident, items.name, items.maker, items.price, cart.quantity, items.image, items.genre from cart join items on cart.ident = items.ident where userId = ?";
+    $stmt = $this->query($sql, [$item]);
     $items = $stmt->fetchAll();
     return $items;
   }
@@ -53,4 +53,15 @@ class Cart extends DbData
     $sql = "delete from cart";
     $result = $this->exec($sql, []);
   }
+  // public function changeUserId($tempId, $userId)
+  // {
+  // $sql = "select * fre"
+  // $stmt = $this->
+  // $cart_items= $stm
+  // foreach ($cart_items as $item){
+
+  //   $this->addItem
+  //   $this->delete
+  //   }
+  // }
 }

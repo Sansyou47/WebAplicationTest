@@ -7,7 +7,7 @@ require_once  __DIR__ . '/pre.php';
 <head>
     <meta charset="UTF-8">
     <title>ショッピングサイト</title>
-    <link rel="stylesheet" href="<?= $shop_css ?>">
+    <link rel="stylesheet" href="./css/shop.css">
 </head>
 
 <body>
